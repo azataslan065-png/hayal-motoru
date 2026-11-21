@@ -55,6 +55,7 @@ public class Ana extends Activity {
             @Override public WebResourceResponse shouldInterceptRequest(WebView v, WebResourceRequest r) { return ver(r); }
         });
         w.loadUrl(ADRES);
+        Magaza.denetle(this);   // güncelleme varsa Uygulama Merkezi'ne yönlendirir (bkz. Magaza)
     }
 
     private WebResourceResponse ver(WebResourceRequest r) {
@@ -86,6 +87,6 @@ public class Ana extends Activity {
     }
 
     @Override protected void onPause() { super.onPause(); w.onPause(); }
-    @Override protected void onResume() { super.onResume(); w.onResume(); tamEkran(); }
+    @Override protected void onResume() { super.onResume(); w.onResume(); tamEkran(); Magaza.denetle(this); }
     @Override protected void onDestroy() { if (w != null) w.destroy(); super.onDestroy(); }
 }
